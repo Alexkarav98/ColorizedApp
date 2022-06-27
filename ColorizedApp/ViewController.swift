@@ -23,14 +23,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
-    private let value: Float = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSliders()
-        setUpRedLabel()
-        setUpBlueLabel()
-        setUpGreenLabel()
+        setUpLabel(scoreRed, redText, redSlider, .red)
+        setUpLabel(scoreGreen, greenText, greenSlider, .green)
+        setUpLabel(scoreBlue, blueText, blueSlider, .blue)
+        colorizedView.layer.cornerRadius = 10
+        colorizedView.layer.masksToBounds = true
     }
     
     //MARK: SliderAction
@@ -40,43 +40,30 @@ class ViewController: UIViewController {
             sliderAction(scoreRed, redSlider)
         case greenSlider:
             sliderAction(scoreGreen, greenSlider)
-        case blueSlider:
-            sliderAction(scoreBlue, blueSlider)
         default:
-            print("NOTHING")
+            sliderAction(scoreBlue, blueSlider)
         }
     }
     
-    //MARK: Sliders
+    //MARK: SetUpSliders
     private func setUpSliders() {
-        redSlider.value = value
-        greenSlider.value = value
-        blueSlider.value = value
+        redSlider.value = 0
+        greenSlider.value = 0
+        blueSlider.value = 0
     }
     
-    //MARK: LabelsSetUp
-    private func setUpRedLabel() {
-        scoreRed.text = ("\(redSlider.value)")
-        scoreRed.textColor = .red
-        scoreRed.textAlignment = .left
-        redText.textColor = .red
+    //MARK: SetUpLabel
+    private func setUpLabel (_ scoreLabel: UILabel,_ textLabel: UILabel,
+                             _ slider: UISlider, _ textColor: UIColor)
+    {
+        scoreLabel.text = String(format: "%.2f", slider.value)
+        scoreLabel.textColor = textColor
+        scoreLabel.textAlignment = .left
+        textLabel.textColor = textColor
     }
     
-    private func setUpGreenLabel () {
-        scoreGreen.text = ("\(greenSlider.value)")
-        scoreGreen.textColor = .green
-        scoreGreen.textAlignment = .left
-        greenText.textColor = .green
-    }
-    
-    private func setUpBlueLabel () {
-        scoreBlue.text = ("\(blueSlider.value)")
-        scoreBlue.textColor = .blue
-        scoreBlue.textAlignment = .left
-        blueText.textColor = .blue
-    }
-    
-    private func sliderAction(_ label: UILabel, _ slider: UISlider) {
+    //MARK: SliderAction
+    private func sliderAction (_ label: UILabel, _ slider: UISlider) {
         label.text = String(format: "%.2f", slider.value)
         colorizedView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
                                                green: CGFloat(greenSlider.value),
