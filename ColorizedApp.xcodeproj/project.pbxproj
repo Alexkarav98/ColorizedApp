@@ -42,6 +42,7 @@
 		0B3CB994287EC72600055C05 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				0BED76F82866E8CB00ADD8DA /* Assets.xcassets */,
 				0BED76EF2866E8C900ADD8DA /* AppDelegate.swift */,
 				0BED76F12866E8C900ADD8DA /* SceneDelegate.swift */,
 			);
@@ -52,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				0BED76F52866E8C900ADD8DA /* Main.storyboard */,
+				0BED76FA2866E8CB00ADD8DA /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -87,8 +89,6 @@
 				0B3CB994287EC72600055C05 /* App */,
 				0B9041B4287EC6720062E95C /* ViewControllers */,
 				0B3CB995287EC74600055C05 /* Storyboards */,
-				0BED76F82866E8CB00ADD8DA /* Assets.xcassets */,
-				0BED76FA2866E8CB00ADD8DA /* LaunchScreen.storyboard */,
 				0BED76FD2866E8CB00ADD8DA /* Info.plist */,
 			);
 			path = ColorizedApp;
