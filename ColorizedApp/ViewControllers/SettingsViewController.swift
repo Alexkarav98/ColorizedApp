@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     @IBOutlet weak var colorizedView: UIView!
     
@@ -23,19 +23,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
+    var color: UIColor!
+    var delegate: ColorSetupViewControllerDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpSliders()
+        colorizedView.backgroundColor = color
+        setUpSliders(color: color)
         setUpLabel(scoreRed, redText, redSlider, .red)
         setUpLabel(scoreGreen, greenText, greenSlider, .green)
         setUpLabel(scoreBlue, blueText, blueSlider, .blue)
         colorizedView.layer.cornerRadius = 10
         colorizedView.layer.masksToBounds = true
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     //MARK: SliderAction
     @IBAction func sliderAction(_ slider: UISlider) {
-        switch slider{
+        switch slider {
         case redSlider:
             sliderAction(scoreRed, redSlider)
         case greenSlider:
@@ -45,11 +50,23 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func doneButtonPressed() {
+        delegate.saveColorSetup(with: colorizedView.backgroundColor ?? .white)
+        dismiss(animated: true)
+    }
+    
     //MARK: SetUpSliders
-    private func setUpSliders() {
-        redSlider.value = 0
-        greenSlider.value = 0
-        blueSlider.value = 0
+    private func setUpSliders(color fromPreviousView: UIColor) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        fromPreviousView.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        redSlider.value = Float(red)
+        greenSlider.value = Float(green)
+        blueSlider.value = Float(blue)
     }
     
     //MARK: SetUpLabel
