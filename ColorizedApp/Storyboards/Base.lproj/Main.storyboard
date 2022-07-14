@@ -21,7 +21,7 @@
                     <navigationItem key="navigationItem" id="2LB-83-LLa">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="MbX-wO-h8b">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="presentation" id="aV4-59-Ehu"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="aV4-59-Ehu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -35,7 +35,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SettingsViewController" customModule="ColorizedApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBm-dN-frp">

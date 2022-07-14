@@ -13,9 +13,6 @@ protocol ColorSetupViewControllerDelegate {
 
 class MainViewController: UIViewController {
     
-    override func viewDidLoad() {
-        saveColorSetup(with: view.backgroundColor ?? .white)
-    }
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

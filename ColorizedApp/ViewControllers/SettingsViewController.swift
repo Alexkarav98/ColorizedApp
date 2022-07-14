@@ -30,9 +30,9 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         colorizedView.backgroundColor = color
         setUpSliders(color: color)
-        setUpLabel(scoreRed, redText, redSlider, .red)
-        setUpLabel(scoreGreen, greenText, greenSlider, .green)
-        setUpLabel(scoreBlue, blueText, blueSlider, .blue)
+        setUpLabel(scoreLabel: scoreRed, textLabel: redText, slider: redSlider, textColor: .red)
+        setUpLabel(scoreLabel: scoreGreen, textLabel: greenText, slider: greenSlider, textColor: .green)
+        setUpLabel(scoreLabel: scoreBlue, textLabel: blueText, slider: blueSlider, textColor: .blue)
         colorizedView.layer.cornerRadius = 10
         colorizedView.layer.masksToBounds = true
         self.tabBarController?.tabBar.isHidden = true
@@ -70,9 +70,10 @@ class SettingsViewController: UIViewController {
     }
     
     //MARK: SetUpLabel
-    private func setUpLabel (_ scoreLabel: UILabel,_ textLabel: UILabel,
-                             _ slider: UISlider, _ textColor: UIColor)
-    {
+    private func setUpLabel (scoreLabel: UILabel,
+                             textLabel: UILabel,
+                             slider: UISlider,
+                             textColor: UIColor) {
         scoreLabel.text = String(format: "%.2f", slider.value)
         scoreLabel.textColor = textColor
         scoreLabel.textAlignment = .left
